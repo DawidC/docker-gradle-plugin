@@ -6,13 +6,34 @@
  * User Manual available at https://docs.gradle.org/6.8.2/userguide/custom_plugins.html
  */
 
+buildscript {
+    ext {
+        projectVersion = "0.1"
+    }
+    repositories {
+//        TODO: Uncomment this line after first build to use the plugin
+        flatDir { dirs "$buildDir/libs" }
+        jcenter()
+    }
+//    TODO: Uncomment this line after first build to use the plugin
+    dependencies {
+//         classpath name: "DockerGradlePlugin-${projectVersion}"
+         classpath name: "plugin-0.1"
+    }
+}
+
 plugins {
     // Apply the Java Gradle plugin development plugin to add support for developing Gradle plugins
     id 'java-gradle-plugin'
 
     // Apply the Groovy plugin to add support for Groovy
     id 'groovy'
+    
 }
+
+apply plugin: 'io.github.DawidC.gradle.docker.greeting'
+
+version projectVersion
 
 repositories {
     // Use JCenter for resolving dependencies.
