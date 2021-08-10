@@ -6,9 +6,7 @@ package io.github.DawidC.gradle.docker
 import org.gradle.api.Project
 import org.gradle.api.Plugin
 
-/**
- * A simple 'hello world' plugin.
- */
+
 class DockerGradlePlugin implements Plugin<Project> {
     void apply(Project project) {
         // Register a task
@@ -17,6 +15,27 @@ class DockerGradlePlugin implements Plugin<Project> {
                 println("Hello from plugin 'io.github.DawidC.gradle.docker.greeting'")
             }
         }
+
+        project.tasks.register("getDockerInfo"){
+            exec{
+                println("getDockerInf2o")
+                commandLine 'ls'
+            }
+        }
+
+        project.tasks.register("testDocker"){
+            exec{
+                commandLine 'ls'
+            }
+        }
+
+
     }
+
+//    def executeCommand(String command) {
+//
+//        commandLine command
+//
+//    }
 }
 

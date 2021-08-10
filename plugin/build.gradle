@@ -11,14 +11,13 @@ buildscript {
         projectVersion = "0.1"
     }
     repositories {
-//        TODO: Uncomment this line after first build to use the plugin
         flatDir { dirs "$buildDir/libs" }
         jcenter()
     }
 //    TODO: Uncomment this line after first build to use the plugin
     dependencies {
 //         classpath name: "DockerGradlePlugin-${projectVersion}"
-         classpath name: "plugin-0.1"
+//         classpath name: "plugin-0.1"
     }
 }
 
@@ -28,10 +27,9 @@ plugins {
 
     // Apply the Groovy plugin to add support for Groovy
     id 'groovy'
-    
 }
 
-apply plugin: 'io.github.DawidC.gradle.docker.greeting'
+//apply plugin: 'io.github.DawidC.gradle.docker.greeting'
 
 version projectVersion
 
@@ -73,4 +71,10 @@ tasks.register('functionalTest', Test) {
 tasks.named('check') {
     // Run the functional tests as part of `check`
     dependsOn(tasks.functionalTest)
+}
+
+tasks.register("checkIfDockerIsInstalledAndRunning"){
+    exec{
+        commandLine 'docker info'
+    }
 }
