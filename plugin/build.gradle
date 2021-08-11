@@ -78,3 +78,7 @@ tasks.register("checkIfDockerIsInstalledAndRunning"){
         commandLine 'docker info'
     }
 }
+
+//tasks.named('build') {
+//    runtimeOnly(tasks.clean)
+//}

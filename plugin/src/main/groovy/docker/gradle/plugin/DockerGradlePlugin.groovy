@@ -5,7 +5,8 @@ package io.github.DawidC.gradle.docker
 
 import org.gradle.api.Project
 import org.gradle.api.Plugin
-
+import org.gradle.api.tasks.Exec
+import org.gradle.internal.os.OperatingSystem
 
 class DockerGradlePlugin implements Plugin<Project> {
     void apply(Project project) {
@@ -16,17 +17,21 @@ class DockerGradlePlugin implements Plugin<Project> {
             }
         }
 
-        project.tasks.register("getDockerInfo"){
-            exec{
-                println("getDockerInf2o")
-                commandLine 'ls'
+        project.tasks.register("getOSInfo"){
+            doLast {
+                if (OperatingSystem.current() == OperatingSystem.WINDOWS){
+                    println('windows')
+                } else {
+                    println('linux')
+                }
             }
         }
 
-        project.tasks.register("testDocker"){
-            exec{
+        project.tasks.register("checkIfDockerIsRunning", Exec){
+
                 commandLine 'ls'
-            }
+
+
         }
 
 

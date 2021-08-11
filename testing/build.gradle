@@ -1,0 +1,16 @@
+buildscript {
+    ext {
+        projectVersion = "0.1"
+    }
+    repositories {
+        flatDir { dirs "$buildDir/../../plugin/build/libs" }
+        jcenter()
+    }
+//    TODO: Uncomment this line after first build to use the plugin
+    dependencies {
+//         classpath name: "DockerGradlePlugin-${projectVersion}"
+         classpath name: "plugin-0.1"
+    }
+}
+
+apply plugin: 'io.github.DawidC.gradle.docker.greeting'
